@@ -2,9 +2,17 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const morgan = require('morgan');
+require('dotenv').config(); // Load environment variables from .env file
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Use the PORT from .env file or default to 3000
+
+// Create a stream for logging
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs.log'), { flags: 'a' });
+
+// Configure morgan for request logging
+app.use(morgan('combined', { stream: accessLogStream }));
 
 // Create the data folder if it doesn't exist
 const uploadFolder = path.join(__dirname, 'data');
@@ -32,17 +40,31 @@ const upload = multer({
 
 app.use(express.static('public'));
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
+
 // Handle file uploads
-app.post('/upload', (req, res) => {
+app.post('/upload', (req, res, next) => {
     upload(req, res, (err) => {
         if (err) {
             if (err.code === 'LIMIT_FILE_SIZE') {
+                console.error('File size exceeds 20MB limit');
                 return res.status(413).send('File size exceeds 20MB limit');
             }
+            console.error('An error occurred during the file upload:', err.message);
             return res.status(500).send('An error occurred during the file upload');
         }
-        res.status(200).send('File uploaded successfully');
+        console.log('File uploaded successfully:', req.file.filename);
+        res.redirect('/success');
     });
+});
+
+// Serve the success page
+app.get('/success', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'success.html'));
 });
 
 // Serve a simple upload form
