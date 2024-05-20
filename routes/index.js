@@ -12,9 +12,4 @@ router.get('/success', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'success.html'));
 });
 
-// Serve the view page
-router.get('/view', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'view.html'));
-});
-
 module.exports = router;
