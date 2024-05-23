@@ -1,0 +1,107 @@
+:root {
+    --primary-bg-color: #08090A;
+    --text-color: #FFFFFF;
+    --heading-text-color: #2188FF;
+    --base-font: 'Arial', sans-serif;
+    --padding-unit: 20px;
+    --border-width: 0.5px;
+    --link-color: #0077CC;
+    --email-color: #1DB954; 
+
+    --header-bg-color: #255d96c8;
+    --footer-bg-color: #202020;
+    --link-text-color: var(--text-color);
+    --nav-hover-bg-color: #050607;
+    --body-bg-color: #010203;
+    --section-bg-color: #18212b69;
+
+    --designer-background: linear-gradient(45deg, #010101, #030303);
+}
+
+/* Body Styling */
+body {
+    font-family: var(--base-font);
+    margin: 0;
+    padding: 0;
+    background: var(--designer-background);
+    color: var(--text-color);
+    align-items: center;
+    text-align: center;
+}
+
+.main {
+    background-color: #ffffff13;
+    color: #2188FF;
+    margin: 0;
+    padding: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-text-color);
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Links Styling */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Email Addresses Styling */
+a[href^="mailto:"] {
+    color: var(--email-color);
+}
+
+form {
+    margin-top: 20px;
+    background-color: #ffffff0a;
+    border: rgba(255, 255, 255, 0.17) 1px solid;
+    padding: 5px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+    color: #4c8201;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Section Styling */
+section {
+    background-color: var(--section-bg-color);
+    padding: var(--padding-unit);
+    margin: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,8 @@
+/* Footer Styling */
+footer {
+    background-color: var(--footer-bg-color);
+    color: var(--text-color);
+    padding: var(--padding-unit);
+    text-align: center;
+    clear: both;
+}
