@@ -1,27 +1,25 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-import Counter from "../components/counter/counter";
-import Hero from "../components/hero/hero";
 import Infobox from "../components/infobox/infobox";
 import Signin from "../components/auth/signin/signin";
 
 export default component$(() => {
   return (
     <>
-      <Hero />
-      <Signin />
+   
 
       <div role="presentation" class="ellipsis"></div>
       <div role="presentation" class="ellipsis ellipsis-purple"></div>
 
       <div class="container container-center container-spacing-xl">
+      <Signin />
         <h3>
           You can <span class="highlight">count</span>
           <br /> on me
         </h3>
         This file server is under active development
-        <Counter />
+
       </div>
 
       <div class="container container-flex">
