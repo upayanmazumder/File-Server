@@ -20,6 +20,7 @@ export default component$(() => {
           You can <span class="highlight">count</span>
           <br /> on me
         </h3>
+        This file server is under active development
         <Counter />
       </div>
 
