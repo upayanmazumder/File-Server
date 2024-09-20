@@ -4,5 +4,9 @@ import Google from "@auth/qwik/providers/google";
 export const { onRequest, useSession, useSignIn, useSignOut } = QwikAuth$(
   () => ({
     providers: [Google],
+    pages: {
+      signIn: "/a/signin/",
+      signOut: "/a/signout/",
+    }
   }),
 );

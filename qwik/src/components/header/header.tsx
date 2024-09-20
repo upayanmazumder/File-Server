@@ -22,7 +22,7 @@ export default component$(() => {
           </li>
           <li>
             <a
-              href="/auth/sign-in"
+              href="/a/signin"
               target="_blank"
             >
               Sign In
