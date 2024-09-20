@@ -11,14 +11,8 @@ export default component$(() => {
    
       <Session />
       <div role="presentation" class="ellipsis"></div>
-      <div role="presentation" class="ellipsis ellipsis-purple"></div>
 
       <div class="container container-center container-spacing-xl">
-      <Form action={signIn}>
-        <input type="hidden" name="providerId" value="github" />
-        <input type="hidden" name="options.redirectTo" value="/auth/signed-in/" />
-        <button>Sign-in with Github</button>
-        </Form>
 
         <Form action={signIn}>
         <input type="hidden" name="providerId" value="google" />
@@ -26,11 +20,6 @@ export default component$(() => {
         <button>Sign-in with Google</button>
         </Form>
 
-        <Form action={signIn}>
-        <input type="hidden" name="providerId" value="discord" />
-        <input type="hidden" name="options.redirectTo" value="/auth/signed-in/" />
-        <button>Sign-in with Discord</button>
-        </Form>
         <h3>
           You can <span class="highlight">count</span>
           <br /> on me
