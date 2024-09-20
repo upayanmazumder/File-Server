@@ -11,9 +11,10 @@ export default component$(() => {
       <div class="container container-center container-spacing-xl">
 
         <h3>
-          You can <span class="highlight">count</span>
-          <br /> on me
+          Welcome to <span class="highlight">File Server</span>
+          <br /> by Upayan
         </h3>
+        <br />
         This file server is under active development
 
       </div>
