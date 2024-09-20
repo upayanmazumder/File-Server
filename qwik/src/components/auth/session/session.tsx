@@ -3,6 +3,10 @@ import { useSession } from '~/routes/plugin@auth';
  
 export default component$(() => {
   const session = useSession();
-  return <p>{session.value?.user?.email}</p>;
+  return (
+    <div class="container container-center">
+      <p>{session.value?.user?.email}</p>
+    </div>
+  );
 });
  
