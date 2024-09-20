@@ -17,7 +17,7 @@ export default component$(() => {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="https://github.com/upayanmazumder/File-Server">
+              <a href="https://github.com/upayanmazumder/File-Server" target='_blank'>
                 Repository
               </a>
             </li>

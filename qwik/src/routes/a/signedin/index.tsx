@@ -5,7 +5,7 @@ export default component$(() => {
   return (
     <>
       <div class="container container-center container-spacing-xl">
-        <h3>Signed in!</h3>
+        <h3>Signed in!</h3> <br/>
         <p>You are now signed in!</p>
       </div>
     </>
