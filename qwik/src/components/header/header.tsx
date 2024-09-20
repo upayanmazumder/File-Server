@@ -21,16 +21,9 @@ export default component$(() => {
           </li>
           <li>
             <a
-              href="/a/signin/"
+              href="https://github.com/upayanmazumder/File-Server"
             >
-              Sign In
-            </a>
-          </li>
-          <li>
-            <a
-              href="/a/signout/"
-            >
-              Sign Out
+              Repository
             </a>
           </li>
         </ul>
