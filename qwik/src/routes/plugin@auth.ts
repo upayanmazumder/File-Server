@@ -5,6 +5,8 @@ import Discord from "@auth/qwik/providers/discord";
 
 export const { onRequest, useSession, useSignIn, useSignOut } = QwikAuth$(
   () => ({
+    secret: process.env.AUTH_SECRET,
+    trustHost: true,
     providers: [
       GitHub({
         clientId: process.env.GITHUB_ID,
