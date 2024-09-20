@@ -15,25 +15,22 @@ export default component$(() => {
           <li>
             <a
               href="/"
-              target="_blank"
             >
               Home
             </a>
           </li>
           <li>
             <a
-              href="/a/signin"
-              target="_blank"
+              href="/a/signin/"
             >
               Sign In
             </a>
           </li>
           <li>
             <a
-              href="https://qwik.dev/tutorial/welcome/overview/"
-              target="_blank"
+              href="/a/signout/"
             >
-              Tutorials
+              Sign Out
             </a>
           </li>
         </ul>

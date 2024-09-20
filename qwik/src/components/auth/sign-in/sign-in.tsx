@@ -9,7 +9,7 @@ export default component$(() => {
   return (
     <Form action={signIn} class={signInStyles.form}>
       <input type="hidden" name="providerId" value="google" />
-      <input type="hidden" name="options.redirectTo" value="/auth/signed-in" />
+      <input type="hidden" name="options.redirectTo" value="/a/signed-in" />
       <button class={signInStyles.button}><BsGoogle /></button>
     </Form>
   );

@@ -6,7 +6,7 @@ export default component$(() => {
     const signOut = useSignOut();
     return (
       <Form action={signOut}>
-        <input type="hidden" name="redirectTo" value="/signedout" />
+        <input type="hidden" name="redirectTo" value="/a/signedout" />
         <button>Sign Out</button>
       </Form>
     );
