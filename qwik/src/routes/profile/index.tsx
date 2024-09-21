@@ -36,7 +36,7 @@ export default component$(() => {
           <br/>
 
           <Form action={signOut} class={sessionStyles.form}>
-            <input type="hidden" name="redirectTo" value="/a/signedout" />
+            <input type="hidden" name="redirectTo" value="/a/signedout/" />
             <button class={sessionStyles.button}>Sign Out</button>
           </Form>
         </div>

@@ -30,6 +30,7 @@ export const { onRequest, useSession, useSignIn, useSignOut } = QwikAuth$(
       pages: {
         signIn: "/a/signin/",
         signOut: "/a/signout/",
+        signedOut: "/a/signedout/"
       }
     };
   },

@@ -6,6 +6,7 @@ export default component$(() => {
     <>
       <div class="container container-center container-spacing-xl">
         <h3>Signed out!</h3>
+        <br/>
         <p>You are now signed out!</p>
       </div>
     </>
