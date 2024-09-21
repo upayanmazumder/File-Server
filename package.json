@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/upayanmazumder/File-Server/issues"
   },
-  "homepage": "https://github.com/upayanmazumder/File-Server#readme"
+  "homepage": "https://github.com/upayanmazumder/File-Server#readme",
+  "dependencies": {
+    "@auth/firebase-adapter": "^2.5.0",
+    "firebase-admin": "^12.5.0"
+  }
 }
