@@ -30,7 +30,6 @@ export default component$(() => {
           </a>
           <div class={sessionStyles.userInfo}>
             <p>{session.value.user?.name}</p>
-            <p>{session.value.user?.email}</p>
           </div>
           
 
