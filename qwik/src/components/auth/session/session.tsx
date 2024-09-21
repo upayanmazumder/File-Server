@@ -13,9 +13,9 @@ export default component$(() => {
   const isSignedIn = session.value?.user;
 
   return (
-    <div class={sessionStyles.container}>
+    <>
       {isSignedIn ? (
-        <>
+        <div class={sessionStyles.containerSession}>
           <a href="/profile">
             <div class={sessionStyles.imgContainer}>
               <img 
@@ -33,16 +33,18 @@ export default component$(() => {
           </div>
           
 
-        </>
+        </div>
       ) : (
-        <Form action={signIn} class={sessionStyles.form}>
-          <input type="hidden" name="providerId" value="google" />
-          <input type="hidden" name="options.redirectTo" value="/a/signedin" />
-          <button class={sessionStyles.iconButton}>
-            <BsGoogle />
-          </button>
-        </Form>
+        <div class={sessionStyles.containerButton}>
+          <Form action={signIn} class={sessionStyles.form}>
+            <input type="hidden" name="providerId" value="google" />
+            <input type="hidden" name="options.redirectTo" value="/a/signedin" />
+            <button class={sessionStyles.iconButton}>
+              <BsGoogle />
+            </button>
+          </Form>
+        </div>
       )}
-    </div>
+    </>
   );
 });
