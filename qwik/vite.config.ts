@@ -22,7 +22,7 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
 export default defineConfig((): UserConfig => {
   return {
     ssr: {
-      noExternal: [],
+      noExternal: ['firebase-admin'],
     },
     plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
     // This tells Vite which dependencies to pre-build in dev mode.
