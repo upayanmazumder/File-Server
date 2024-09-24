@@ -21,9 +21,6 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
  */
 export default defineConfig((): UserConfig => {
   return {
-    ssr: {
-      noExternal: ['firebase-admin'],
-    },
     plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
@@ -48,7 +45,11 @@ export default defineConfig((): UserConfig => {
     //         external: Object.keys(dependencies),
     //       }
     //     : undefined,
-
+    ssr: {
+      noExternal: Object.keys(devDependencies),
+      external: [...Object.keys(dependencies), 'fs'], // Add 'fs' here
+    },
+    
     server: {
       headers: {
         // Don't cache the server response in dev mode
