@@ -1,6 +1,6 @@
 /**
- * This is the base config for vite.
- * When building, the adapter config is used which loads this file and extends it.
+ * Base Vite config used for both development and production.
+ * Extended by adapter configurations for specific deployment environments.
  */
 import { defineConfig, type UserConfig } from "vite";
 import { qwikVite } from "@builder.io/qwik/optimizer";
@@ -9,109 +9,75 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import pkg from "./package.json";
 
 type PkgDep = Record<string, string>;
-const { dependencies = {}, devDependencies = {} } = pkg as any as {
+const { dependencies = {}, devDependencies = {} } = pkg as {
   dependencies: PkgDep;
   devDependencies: PkgDep;
   [key: string]: unknown;
 };
+
+// Check for duplicate dependencies in both `dependencies` and `devDependencies`
 errorOnDuplicatesPkgDeps(devDependencies, dependencies);
 
 /**
- * Note that Vite normally starts from `index.html` but the qwikCity plugin makes start at `src/entry.ssr.tsx` instead.
+ * Default Vite configuration. Entry is `src/entry.ssr.tsx` due to QwikCity's plugin.
  */
 export default defineConfig((): UserConfig => {
   return {
     plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
-    // This tells Vite which dependencies to pre-build in dev mode.
+
     optimizeDeps: {
-      // Put problematic deps that break bundling here, mostly those with binaries.
-      // For example ['better-sqlite3'] if you use that in server functions.
-      exclude: [],
+      // Specify dependencies that may break Vite's pre-bundling process (e.g., with native modules).
+      exclude: [], // Add problematic deps like 'better-sqlite3' here.
     },
 
-    /**
-     * This is an advanced setting. It improves the bundling of your server code. To use it, make sure you understand when your consumed packages are dependencies or dev dependencies. (otherwise things will break in production)
-     */
     ssr: {
+      // Ensures devDependencies are bundled, excluding any issues in production environments.
       noExternal: Object.keys(devDependencies),
       external: [
-        ...Object.keys(dependencies),
-        'fs',
-        'buffer',
-        'stream',
-        'events',
-        'assert',
-        'tls',
-        'net',
-        'util',
-        'path',
-        'querystring',
-        'crypto',
-        'child_process',
-        'os',
-        'url',
-        'https',
-        'zlib',
-        'http2',
-        'http'
+        ...Object.keys(dependencies), // Include external dependencies required for SSR.
+        'fs', 'buffer', 'stream', 'events', 'assert', 'tls', 'net', 'util', 
+        'path', 'querystring', 'crypto', 'child_process', 'os', 'url', 'https', 
+        'zlib', 'http2', 'http'
       ],
     },
 
     server: {
       headers: {
-        // Don't cache the server response in dev mode
+        // Avoids caching responses during development
         "Cache-Control": "public, max-age=0",
       },
     },
     preview: {
       headers: {
-        // Do cache the server response in preview (non-adapter production build)
+        // Caches responses for up to 10 minutes during the preview mode.
         "Cache-Control": "public, max-age=600",
       },
     },
   };
 });
 
-// *** utils ***
-
 /**
- * Function to identify duplicate dependencies and throw an error
- * @param {Object} devDependencies - List of development dependencies
- * @param {Object} dependencies - List of production dependencies
+ * Helper function to throw an error if duplicates exist in dependencies and devDependencies.
+ * @param {Object} devDependencies - List of development dependencies.
+ * @param {Object} dependencies - List of production dependencies.
  */
 function errorOnDuplicatesPkgDeps(
   devDependencies: PkgDep,
-  dependencies: PkgDep,
+  dependencies: PkgDep
 ) {
-  let msg = "";
-  // Create an array 'duplicateDeps' by filtering devDependencies.
-  // If a dependency also exists in dependencies, it is considered a duplicate.
-  const duplicateDeps = Object.keys(devDependencies).filter(
-    (dep) => dependencies[dep],
-  );
+  const duplicateDeps = Object.keys(devDependencies).filter(dep => dependencies[dep]);
+  const qwikPkg = Object.keys(dependencies).filter(dep => /qwik/i.test(dep));
 
-  // include any known qwik packages
-  const qwikPkg = Object.keys(dependencies).filter((value) =>
-    /qwik/i.test(value),
-  );
-
-  // any errors for missing "qwik-city-plan"
-  // [PLUGIN_ERROR]: Invalid module "@qwik-city-plan" is not a valid package
-  msg = `Move qwik packages ${qwikPkg.join(", ")} to devDependencies`;
-
+  // If any Qwik packages are found in production dependencies, throw an error
   if (qwikPkg.length > 0) {
-    throw new Error(msg);
+    throw new Error(`Move Qwik packages ${qwikPkg.join(", ")} to devDependencies`);
   }
 
-  // Format the error message with the duplicates list.
-  // The `join` function is used to represent the elements of the 'duplicateDeps' array as a comma-separated string.
-  msg = `
-    Warning: The dependency "${duplicateDeps.join(", ")}" is listed in both "devDependencies" and "dependencies".
-    Please move the duplicated dependencies to "devDependencies" only and remove it from "dependencies"
-  `;
-
-  // Throw an error with the constructed message.
+  // Warn the user if there are duplicate dependencies
   if (duplicateDeps.length > 0) {
-    throw new Error(msg);
+    throw new Error(`
+      Warning: The dependencies "${duplicateDeps.join(", ")}" are listed in both "devDependencies" and "dependencies".
+      Please move the duplicated dependencies to "devDependencies" and remove them from "dependencies".
+    `);
   }
 }
