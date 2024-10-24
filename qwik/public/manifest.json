@@ -1,9 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "file-server",
-  "short_name": "File Server",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#2592c8",
-  "description": "A cool file server"
-}
