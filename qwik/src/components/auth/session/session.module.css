@@ -1,0 +1,110 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 15px;
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: #FFF8E1;
+    width: fit-content;
+    max-width: 300px;
+    margin: auto 30px auto 0;
+    text-align: center;
+    background-color: #1919198a;
+    height: fit-content;
+  }
+  
+  .imgContainer {
+    background-color: transparent;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    flex-shrink: 0;
+    border: rgba(255, 255, 255, 0) 5px solid;
+    transition: border 0.3s ease;
+  }
+
+  .imgContainer:hover {
+    border: rgba(255, 255, 255, 0.634) 5px solid;
+  }
+  
+  .img {
+    border-radius: 50%;
+    border: 2px solid #333333;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .userInfo {
+    display: flex;
+    flex-direction: column;
+    color: rgb(255, 253, 253) !important;
+    flex-grow: 1;
+    padding: 0 10px; 
+    font-size: small;
+  }
+  
+  .userInfo p {
+    margin: 0;
+    font-size: 0.9rem; /* Smaller text */
+    line-height: 1.2rem;
+    color: rgb(255, 253, 253) !important;
+  }
+  
+  .email {
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 180px; /* Limit email to prevent overflow */
+  }
+  
+  .form {
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  .button {
+    padding: 10px 15px;
+    margin: 3%;
+    color:#FFF8E1;
+    background-color: #0a539b;
+    border: solid black;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #216ab3;
+  }
+  
+  .iconButton {
+    background-color:#2457c5;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .iconButton:hover {
+    transform: scale(1.1);
+  }
+  
+  .iconButton svg {
+    width: 34px;
+    height: 34px;
+    fill: rgb(247, 244, 244);
+  }
+  

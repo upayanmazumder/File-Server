@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "prod": "upayans-file-server"
+  },
+  "targets": {},
+  "etags": {}
+}
