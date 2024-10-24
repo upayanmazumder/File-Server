@@ -1,0 +1,5 @@
+services:
+  file-server:
+    image: upayanmazumder/file-server:latest
+    ports:
+      - 3200:3000
