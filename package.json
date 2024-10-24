@@ -1,0 +1,26 @@
+{
+  "name": "file-server",
+  "version": "1.0.0",
+  "description": "A file sharing website",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cd qwik && npm run dev",
+    "build": "cd qwik && npm run build",
+    "deploy": "cd qwik && npm run build && npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/upayanmazumder/File-Server.git"
+  },
+  "keywords": [
+    "file-server",
+    "file",
+    "server"
+  ],
+  "author": "upayanmazumder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/upayanmazumder/File-Server/issues"
+  },
+  "homepage": "https://github.com/upayanmazumder/File-Server#readme"
+}
