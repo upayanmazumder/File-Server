@@ -16,10 +16,8 @@ RUN npm install
 WORKDIR /app/api
 RUN npm install
 
-# Install dependencies for the qwik folder and set ORIGIN environment variable
+# Install dependencies for the qwik folder and build the server
 WORKDIR /app/qwik
-ENV NODE_ENV production
-ENV ORIGIN https://fs.upayan.space
 RUN npm install
 
 # Copy the local code to the container image
@@ -27,4 +25,4 @@ WORKDIR /app
 COPY . .
 
 # Run the web service on container startup
-CMD npm run build-qwik && npm run deploy
+CMD [ "npm", "run", "build-qwik", "&&", "npm", "run", "deploy" ]
