@@ -25,4 +25,4 @@ WORKDIR /app
 COPY . .
 
 # Run the web service on container startup
-CMD [ "npm", "run", "build-qwik", "&&", "npm", "run", "deploy" ]
+CMD ["sh", "-c", "npm run build-qwik && npm run deploy"]
