@@ -19,7 +19,7 @@ RUN npm install
 # Install dependencies for the qwik folder and set ORIGIN environment variable
 WORKDIR /app/qwik
 ENV NODE_ENV production
-ENV ORIGIN https://
+ENV ORIGIN https://fs.upayan.space
 RUN npm install
 
 # Copy the local code to the container image
