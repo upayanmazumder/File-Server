@@ -19,11 +19,10 @@ RUN npm install
 # Install dependencies for the qwik folder and build the server
 WORKDIR /app/qwik
 RUN npm install
-RUN npm run build
 
 # Copy the local code to the container image
 WORKDIR /app
 COPY . .
 
 # Run the web service on container startup
-CMD [ "npm", "run", "deploy" ]
+CMD [ "npm", "run", "build-qwik", "&&", "npm", "run", "deploy" ]
