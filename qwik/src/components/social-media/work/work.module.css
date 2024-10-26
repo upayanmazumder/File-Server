@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&display=swap');
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #c9d1d9;
+    padding: 10px;
+    border-radius: 35px;
+    width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+    font-family: 'Red Hat Display';
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-family: 'Red Hat Display';
+}
+
+.button-group a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #161b22;
+    color: #58a6ff;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    font-family: 'Red Hat Display';
+}
+
+.button {
+    margin: auto 10px;
+    font-family: 'Red Hat Display';
+}
+
+.button-group a:hover {
+    transform: scale(1.1);
+    background-color: #21262d;
+}
+
+.button-group a:active {
+    transform: scale(0.9);
+}
+
+button.microsoftlearn-button {
+    background-color: #f25022;
+    font-family: 'Red Hat Display';
+}
+
+button.leetcode-button {
+    background-color: #ffab1d;
+    font-family: 'Red Hat Display';
+}
+
+button.IIT-M-button {
+    background-color: #2a0908;
+    color: #d6a64f;
+    font-family: 'Red Hat Display';
+}
+
+button.gravatar-button {
+    background-color: #4578ea;
+    font-family: 'Red Hat Display';
+}
+
+@media (max-width: 1200px) {
+    .button-group a {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 992px) {
+    .button {
+        margin-top: 10px;
+    }
+    .button-group a {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .button-group {
+        justify-content: center;
+    }
+
+    .button-group a {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 15px;
+    }
+
+    .button-group a {
+        width: 30px;
+        height: 30px;
+    }
+}

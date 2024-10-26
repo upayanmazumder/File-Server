@@ -1,0 +1,28 @@
+:root {
+    --header-background-color: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    line-height: inherit;
+    background-image: url("./media/background/bg4.svg");
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 0;
+    background-position: center center;
+
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}

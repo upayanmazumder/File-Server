@@ -1,0 +1,86 @@
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  .p {
+    color: #ffffff; /* White text */
+    margin: 5px 0;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .p:hover {
+    color: #4a90e2; /* Change to light blue on hover */
+  }
+  
+  .form {
+    margin-top: 20px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff; /* White text */
+    background-color: #3b3f6c; /* Dark blue */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: popIn 0.5s ease-in-out;
+  }
+  
+  .button:hover {
+    background-color: #4a90e2; /* Light blue on hover */
+    transform: scale(1.05);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes popIn {
+    from {
+      transform: scale(0.9);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  .ellipsis {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #4a90e2, #3b3f6c); /* Gradient for the ellipsis */
+    animation: ellipsisAnimation 1s infinite;
+  }
+  
+  @keyframes ellipsisAnimation {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
