@@ -16,9 +16,10 @@ RUN npm install
 WORKDIR /app/api
 RUN npm install
 
-# Install dependencies for the qwik folder
+# Install dependencies for the qwik folder and build the server
 WORKDIR /app/qwik
 RUN npm install
+RUN npm run build
 
 # Copy the local code to the container image
 WORKDIR /app
