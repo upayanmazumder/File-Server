@@ -1,0 +1,4 @@
+services:
+  file-server:
+    image: ghcr.io/upayanmazumder/file-server:latest
+    build: .
