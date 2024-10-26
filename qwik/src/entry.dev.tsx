@@ -12,6 +12,14 @@
 import { render, type RenderOptions } from "@builder.io/qwik";
 import Root from "./root";
 
+const trustedHosts = ["localhost", "127.0.0.1"];
+
 export default function (opts: RenderOptions) {
-  return render(document, <Root />, opts);
+  const currentHost = window.location.hostname;
+  if (trustedHosts.includes(currentHost)) {
+    return render(document, <Root />, opts);
+  } else {
+    console.error("Untrusted host:", currentHost);
+    return null;
+  }
 }
