@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaGithub, FaLink, FaDiscord, FaSignInAlt } from 'react-icons/fa';
+import { FaGithub, FaDiscord, FaSignInAlt } from 'react-icons/fa';
+import { IoCreateOutline } from "react-icons/io5";
 import styles from './header.module.css';
 import Link from 'next/link';
 
@@ -12,6 +13,14 @@ const Header = () => {
           <h1 className={styles.title}>File Server</h1>
         </Link>
         <div className={styles.buttonContainer}>
+          <a
+            href="/upload"
+            rel="noopener noreferrer"
+            className={styles.button}
+          >
+            <IoCreateOutline className={styles.iconStyle} />
+            Upload
+          </a>
           <a
             href="https://github.com/upayanmazumder/File-Server"
             target="_blank"

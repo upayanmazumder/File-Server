@@ -5,6 +5,7 @@ import { storage, firestore, auth } from '../../../shared/firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { collection, addDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
+import styles from "../page.module.css";
 
 const FileUpload = () => {
     const [file, setFile] = useState(null);
@@ -43,6 +44,12 @@ const FileUpload = () => {
             return;
         }
 
+        // Check if file size exceeds 5MB
+        if (file.size > 5 * 1024 * 1024) {
+            setMessage('File size exceeds the 5MB limit');
+            return;
+        }
+
         const storageRef = ref(storage, `files/${userId}/${file.name}`);
         const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -77,7 +84,7 @@ const FileUpload = () => {
     };
 
     return (
-        <div>
+        <div className={styles.page}>
             <input type="file" onChange={handleChange} />
             <button onClick={handleUpload} disabled={!userId}>Upload</button>
             <div>Progress: {progress}%</div>
