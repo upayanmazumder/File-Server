@@ -1,0 +1,28 @@
+.sessionContainer {
+  display: flex;
+  align-items: center;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+}
+
+.profilePic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.loginLink {
+  font-size: 16px;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}

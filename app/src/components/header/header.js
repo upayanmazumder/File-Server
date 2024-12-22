@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaGithub, FaDiscord, FaSignInAlt } from 'react-icons/fa';
 import { IoCreateOutline } from "react-icons/io5";
+import Session from "../session/session";
 import styles from './header.module.css';
 import Link from 'next/link';
 
@@ -39,10 +40,7 @@ const Header = () => {
             <FaDiscord className={styles.iconStyle} />
             Discord
           </a>
-          <Link href="/auth" className={styles.button}>
-            <FaSignInAlt className={styles.iconStyle} />
-            Authenticate
-          </Link>
+          <Session />
         </div>
       </div>
     </header>
