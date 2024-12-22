@@ -4,8 +4,7 @@
   "description": "A file sharing website",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cd qwik && npm run dev",
-    "build-qwik": "cd qwik && npm run build",
+    "dev": "cd app && npm run dev",
     "deploy": "node api/server"
   },
   "repository": {
