@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import styles from "../page.module.css";
 
 import Upload from "../../components/upload/upload";
 
-export default () => {
+const UploadPage = () => {
     return (
         <div className={styles.page}>
             <main class={styles.main}>
@@ -14,4 +14,6 @@ export default () => {
         </div>
     );
 };
+
+export default UploadPage;
 
