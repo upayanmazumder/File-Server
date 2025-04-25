@@ -1,23 +1,27 @@
-# Use the official Node.js image
-FROM node:20
-
-# Create and change to the app directory
+FROM node:23-alpine AS build-app
 WORKDIR /app
+COPY app/package.json app/package-lock.json* ./
+RUN npm ci
+COPY app/ .
+RUN npm run build
 
-# Copy application dependency manifests to the container image
-COPY package*.json ./
-COPY api/package*.json ./api/
+FROM node:23-alpine AS build-api
+WORKDIR /api
+COPY api/package.json api/package-lock.json* ./
+RUN npm ci
+COPY api/ .
 
-# Install dependencies for the root
-RUN npm install
+FROM node:23-alpine
 
-# Install dependencies for the api folder
-WORKDIR /app/api
-RUN npm install
+RUN apk add --no-cache tini
 
-# Copy the local code to the container image
-WORKDIR /app
-COPY . .
+WORKDIR /workspace
 
-# Run the web service on container startup
-CMD ["sh", "-c", "npm run deploy"]
+COPY --from=build-app /app ./app
+COPY --from=build-api /api ./api
+
+EXPOSE 3000 5000
+
+ENTRYPOINT ["/sbin/tini", "--"]
+
+CMD ["sh", "-c", "cd app && npm run deploy & cd api && npm run start"]
